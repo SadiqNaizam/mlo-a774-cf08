@@ -1,14 +1,36 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import React from 'react';
+import MainAppLayout from '@/components/layout/MainAppLayout';
+import LineChartSection from '@/components/Dashboard/LineChartSection';
+import ProfitLossTable from '@/components/Dashboard/ProfitLossTable';
+import RevenueBreakdown from '@/components/Dashboard/RevenueBreakdown';
+import StatCardGrid from '@/components/Dashboard/StatCardGrid';
 
-const Index = () => {
+/**
+ * The main dashboard overview page.
+ * 
+ * This page serves as the central hub for the financial dashboard, composing
+ * various data visualization and summary components within a consistent application layout.
+ * It follows a modular approach, where each major section of the dashboard
+ * (e.g., stats, charts, tables) is a self-contained component.
+ */
+const DashboardPage: React.FC = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
+    <MainAppLayout>
+      <div className="flex flex-col gap-6 lg:gap-8">
+        {/* Section 1: Key Performance Indicator (KPI) Cards */}
+        <StatCardGrid />
+
+        {/* Section 2: Monthly Profit/Loss Analysis Chart */}
+        <LineChartSection />
+
+        {/* Section 3: Revenue Breakdown by Type and Top Clients */}
+        <RevenueBreakdown />
+
+        {/* Section 4: Detailed Monthly Profit & Loss Statement Table */}
+        <ProfitLossTable />
       </div>
-    </div>
+    </MainAppLayout>
   );
 };
 
-export default Index;
+export default DashboardPage;
